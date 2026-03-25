@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<h1>LEGO Inventory</h1>
+
+<div x-data="app()" x-init="init()">
+  <p class="error" x-show="error" x-text="error"></p>
+
+  <template x-if="!user">
+    <p>You are not logged in.</p>
+  </template>
+
+  <template x-if="user">
+    <div>
+      <p>Logged in as <strong x-text="user.username"></strong></p>
+      <button @click="logout()">Logout</button>
+
+      <h2>Items</h2>
+      <button @click="loadItems()">Refresh</button>
+
+      <template x-for="it in items" :key="it.id">
+        <div class="card">
+          <div><strong x-text="it.name"></strong> (<span x-text="it.sku"></span>)</div>
+          <div>Qty: <span x-text="it.quantity"></span></div>
+        </div>
+      </template>
+    </div>
+  </template>
+</div>
+{% endblock %}

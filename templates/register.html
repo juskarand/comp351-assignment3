@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+{% block content %}
+<h1>Register</h1>
+
+<div x-data="app()">
+  <p class="error" x-show="error" x-text="error"></p>
+  <p class="success" x-show="success" x-text="success"></p>
+
+  <form @submit.prevent="register()">
+    <input placeholder="username" x-model="registerForm.username" required />
+    <input placeholder="email" type="email" x-model="registerForm.email" required />
+    <input placeholder="password (8+)" type="password" x-model="registerForm.password" required />
+    <button type="submit">Register</button>
+  </form>
+</div>
+{% endblock %}

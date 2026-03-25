@@ -1,0 +1,7 @@
+.env
+cookies.txt
+*.db
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
